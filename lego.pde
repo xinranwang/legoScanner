@@ -4,9 +4,9 @@ class lego {
   int pieceX;
   int pieceY;
   
-  lego(int x, int y) {
+  lego(int x, int y, int colorIndex) {
     //pieceColor = colors[0];
-    pieceColorIndex = 0;
+    pieceColorIndex = colorIndex;
     pieceX = x;
     pieceY = y;
   }

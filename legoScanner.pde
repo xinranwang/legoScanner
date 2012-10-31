@@ -70,7 +70,7 @@ void draw() {
 void initLego() {
   for (int i = 0; i < height / pixelSize; i++) {
     for (int j = 0; j < width / pixelSize; j++) {
-      myLegos = (lego[])append(myLegos, new lego(j * pixelSize, i * pixelSize));
+      myLegos = (lego[])append(myLegos, new lego(j * pixelSize, i * pixelSize, 0));
     }
   }
 }

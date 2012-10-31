@@ -49,6 +49,7 @@ void saveData(int x, int y) {
   String[] data = new String[dataHeight];
 
   for (int i = 0; i < dataHeight; i++) {
+    ////////// ARRAY OUT OF BOUNDARY 
     data[i] = String.valueOf(myLegos[startX + (i + 1) * startY * video.width / pixelSize].pieceColorIndex);
     for (int j = 1; j < dataWidth; j++) {
       data[i] += "," + String.valueOf(myLegos[startX + j + (i + 1) * startY * video.width / pixelSize].pieceColorIndex);
@@ -58,11 +59,11 @@ void saveData(int x, int y) {
   saveStrings("data/data.txt", data);
 }
 
-void loadData() {
-  String[] data = loadStrings("data.txt");
-  loadLegos = new lego[data.length()];
-  for(int i = 0; i < bubbles.length(); i++) {
-    int[] values = int(split(data[i], ","));
-    loadLegos[i] = new lego();
-  }
-}
+//void loadData() {
+//  String[] data = loadStrings("data.txt");
+//  loadLegos = new lego[data.length()];
+//  for(int i = 0; i < bubbles.length(); i++) {
+//    int[] values = int(split(data[i], ","));
+//    loadLegos[i] = new lego();
+//  }
+//}
