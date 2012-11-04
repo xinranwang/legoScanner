@@ -41,7 +41,8 @@ void draw() {
 
     for (int x = 0; x < width; x += pixelSize) {
       for (int y = 0; y < height; y += pixelSize) {
-
+        
+        // from left to right, up to down
         int thisPixel = x + y * video.width;
         int thisLego = x / pixelSize + y / pixelSize * video.width / pixelSize;
 
