@@ -4,7 +4,7 @@ Capture video;
 
 int pixelSize = 10;
 
-int colorTolerance = 120;
+int colorTolerance = 150;
 
 int mousePressedX, mousePressedY;
 
