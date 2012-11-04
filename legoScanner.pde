@@ -3,11 +3,12 @@ import processing.video.*;
 Capture video;
 
 int pixelSize = 10;
+int legoStrokeColor = 180;
+float legoStrokeWeight = 0.2;
 
-int colorTolerance = 150;
+int colorTolerance = 200;
 
 int mousePressedX, mousePressedY;
-
 
 // COLOR ARRAY
 color[] colors = new color[0];
@@ -18,53 +19,22 @@ lego[] loadLegos;
 
 void setup() {
   size(640, 480);
-  strokeWeight(0.2);
-  stroke(180);
+  strokeWeight(legoStrokeWeight);
+  stroke(legoStrokeColor);
 
   initColors();
   initLego();
+  loadData();
 
-  //println(colors);
   video = new Capture(this, width, height);
   video.start();
 }
 
 void draw() {
+  enableVideo();
 
-  if (video.available()) {
-    video.read();
-    video.loadPixels();
-
-    background(0);
-    //image(video, 0, 0, width, height);
-    //loadPixels();
-
-    for (int x = 0; x < width; x += pixelSize) {
-      for (int y = 0; y < height; y += pixelSize) {
-        
-        // from left to right, up to down
-        int thisPixel = x + y * video.width;
-        int thisLego = x / pixelSize + y / pixelSize * video.width / pixelSize;
-
-        color colorFromVideo = video.pixels[thisPixel];
-        float pixelR = red(colorFromVideo);
-        float pixelG = green(colorFromVideo);
-        float pixelB = blue(colorFromVideo);
-
-        //println(colorInLegoIndex(pixelR, pixelG, pixelB));
-        int thisLegoColorIndex = colorInLegoIndex(pixelR, pixelG, pixelB);
-
-        //myLegos[thisLego].pieceColor = colors[colorInLegoIndex(pixelR, pixelG, pixelB)];
-        myLegos[thisLego].pieceColorIndex = colorInLegoIndex(pixelR, pixelG, pixelB);
-
-        strokeWeight(0.2);
-        stroke(180);
-        //myLegos[thisLego].pieceColor = colorFromVideo;
-        myLegos[thisLego].drawPiece();
-      }
-    }
-    //updatePixels();
-  }
+  //drawLoadData(mouseX, mouseY);
+  
 }
 
 // BUILD THE LEGO ARRAY
@@ -135,4 +105,41 @@ int findMinIndex(float[] distArray) {
   }
 }
 
+
+void enableVideo() {
+  if (video.available()) {
+    video.read();
+    video.loadPixels();
+
+    background(0);
+    //image(video, 0, 0, width, height);
+    //loadPixels();
+
+    for (int x = 0; x < width; x += pixelSize) {
+      for (int y = 0; y < height; y += pixelSize) {
+
+        // from left to right, up to down
+        int thisPixel = x + y * video.width;
+        int thisLego = x / pixelSize + y / pixelSize * video.width / pixelSize;
+
+        color colorFromVideo = video.pixels[thisPixel];
+        float pixelR = red(colorFromVideo);
+        float pixelG = green(colorFromVideo);
+        float pixelB = blue(colorFromVideo);
+
+        //println(colorInLegoIndex(pixelR, pixelG, pixelB));
+        int thisLegoColorIndex = colorInLegoIndex(pixelR, pixelG, pixelB);
+
+        //myLegos[thisLego].brickColor = colors[colorInLegoIndex(pixelR, pixelG, pixelB)];
+        myLegos[thisLego].brickColorIndex = colorInLegoIndex(pixelR, pixelG, pixelB);
+
+
+        //myLegos[thisLego].brickColor = colorFromVideo;
+        myLegos[thisLego].drawBrick();
+        myLegos[thisLego].drawBrickWithColor(colorFromVideo);
+      }
+    }
+    //updatePixels();
+  }
+}
 

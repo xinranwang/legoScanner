@@ -1,20 +1,48 @@
 class lego {
-  //color pieceColor;
-  int pieceColorIndex;
-  int pieceX;
-  int pieceY;
   
+  //color brickColor;
+  int brickColorIndex;
+  int brickX;
+  int brickY;
+
   lego(int x, int y, int colorIndex) {
-    //pieceColor = colors[0];
-    pieceColorIndex = colorIndex;
-    pieceX = x;
-    pieceY = y;
+
+    brickColorIndex = colorIndex;
+    brickX = x;
+    brickY = y;
+  }
+
+  void setLocation(int x, int y) {
+    brickX = x;
+    brickY = y;
+  }
+
+  void setColor(int colorIndex) {
+    brickColorIndex = colorIndex;
+  }
+
+  void drawBrick() {
+    strokeWeight(legoStrokeWeight);
+    stroke(legoStrokeColor);
+    fill(colors[brickColorIndex]);
+    rect(brickX, brickY, pixelSize, pixelSize);
+    ellipse(brickX + pixelSize / 2, brickY + pixelSize / 2, pixelSize * 0.7, pixelSize * 0.7);
+  }
+
+  void drawBrick(int x, int y) {
+    strokeWeight(legoStrokeWeight);
+    stroke(legoStrokeColor);
+    fill(colors[brickColorIndex]);
+    rect(brickX + x, brickY + y, pixelSize, pixelSize);
+    ellipse(brickX + pixelSize / 2 + x, brickY + pixelSize / 2 + y, pixelSize * 0.7, pixelSize * 0.7);
   }
   
-  void drawPiece() {
-    //fill(pieceColor);
-    fill(colors[pieceColorIndex]);
-    rect(pieceX, pieceY, pixelSize, pixelSize);
-    ellipse(pieceX + pixelSize / 2, pieceY + pixelSize / 2, pixelSize * 0.7, pixelSize * 0.7);
+  void drawBrickWithColor(color _brickColor) {
+    strokeWeight(legoStrokeWeight);
+    stroke(legoStrokeColor);
+    fill(_brickColor);
+    rect(brickX, brickY, pixelSize, pixelSize);
+    ellipse(brickX + pixelSize / 2, brickY + pixelSize / 2, pixelSize * 0.7, pixelSize * 0.7);
   }
 }
+
