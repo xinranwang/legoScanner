@@ -51,10 +51,10 @@ void saveData(int x, int y) {
   data[1] = "Height:\"" + dataHeight + "\"";
 
   for (int i = 2; i < dataHeight + 2; i++) {
-    ////////// ARRAY OUT OF BOUNDARY 
-    data[i] = String.valueOf(myLegos[startX + (i + 1) * startY * video.width / pixelSize].brickColorIndex);
+    
+    data[i] = String.valueOf(myLegos[startX + (startY + i - 2) * video.width / pixelSize].brickColorIndex);
     for (int j = 1; j < dataWidth; j++) {
-      data[i] += "," + String.valueOf(myLegos[startX + j + (i + 1) * startY * video.width / pixelSize].brickColorIndex);
+      data[i] += "," + String.valueOf(myLegos[startX + j + (startY + i - 2) * video.width / pixelSize].brickColorIndex);
     }
   }
 

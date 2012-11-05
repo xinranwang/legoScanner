@@ -31,9 +31,9 @@ void setup() {
 }
 
 void draw() {
-  enableVideo();
+  //enableVideo();
 
-  //drawLoadData(mouseX, mouseY);
+  drawLoadData(mouseX, mouseY);
   
 }
 
@@ -49,13 +49,20 @@ void initLego() {
 // BUILD THE COLOR ARRAY
 void initColors() {
   colors = (color[])append(colors, color(0)); // BLACK
-  //  colors = (color[])append(colors, color(32)); // BLACK
-  //  colors = (color[])append(colors, color(64)); // BLACK
-  //  colors = (color[])append(colors, color(96)); // BLACK
-  //  colors = (color[])append(colors, color(128)); // BLACK
-  //  colors = (color[])append(colors, color(160)); // BLACK
-  //  colors = (color[])append(colors, color(192)); // BLACK
-  //  colors = (color[])append(colors, color(224)); // BLACK
+//  colors = (color[])append(colors, color(16)); // BLACK
+//  colors = (color[])append(colors, color(32)); // BLACK
+//  colors = (color[])append(colors, color(48)); // BLACK
+//  colors = (color[])append(colors, color(64)); // BLACK
+//  colors = (color[])append(colors, color(72)); // BLACK
+//  colors = (color[])append(colors, color(96)); // BLACK
+//  colors = (color[])append(colors, color(102)); // BLACK
+//  colors = (color[])append(colors, color(128)); // BLACK
+//  colors = (color[])append(colors, color(144)); // BLACK
+//  colors = (color[])append(colors, color(160)); // BLACK
+//  colors = (color[])append(colors, color(176)); // BLACK
+//  colors = (color[])append(colors, color(192)); // BLACK
+//  colors = (color[])append(colors, color(208)); // BLACK
+//  colors = (color[])append(colors, color(224)); // BLACK
 
 
   colors = (color[])append(colors, color(255)); // WHITE
@@ -136,7 +143,7 @@ void enableVideo() {
 
         //myLegos[thisLego].brickColor = colorFromVideo;
         myLegos[thisLego].drawBrick();
-        myLegos[thisLego].drawBrickWithColor(colorFromVideo);
+        //myLegos[thisLego].drawBrickWithColor(colorFromVideo);
       }
     }
     //updatePixels();
