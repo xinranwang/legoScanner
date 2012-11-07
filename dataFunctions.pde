@@ -6,8 +6,8 @@ void mousePressed() {
 void mouseDragged() {
 
   stroke(255);
-  strokeWeight(1);
-  noFill();
+  strokeWeight(3);
+  fill(255, 80);
   
   rect(mousePressedX, mousePressedY, mouseX - mousePressedX, mouseY - mousePressedY);
 }
@@ -69,6 +69,7 @@ void saveData(int x, int y) {
 //  if (dataWidth < 0) dataWidth = -dataWidth;
 //  if (dataHeight < 0) dataHeight = -dataHeight;
 
+  if(!(dataWidth < 1) && !(dataHeight < 1)) {
   String[] data = new String[dataHeight + 2];
 
   data[0] = "Width:\"" + dataWidth + "\"";
@@ -83,6 +84,11 @@ void saveData(int x, int y) {
   }
 
   saveStrings("data/data.txt", data);
+  
+  
+  println("Width: " + dataWidth + ", Height: " + dataHeight);
+  println("Data saved!");
+  }
 }
 
 void loadData() {

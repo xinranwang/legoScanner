@@ -4,7 +4,7 @@ class lego {
   int brickColorIndex;
   int brickX;
   int brickY;
-
+  
   lego(int x, int y, int colorIndex) {
 
     brickColorIndex = colorIndex;
@@ -19,6 +19,13 @@ class lego {
 
   void setColor(int colorIndex) {
     brickColorIndex = colorIndex;
+  }
+  
+  void setEverything(int x, int y, int colorIndex) {
+
+    brickColorIndex = colorIndex;
+    brickX = x;
+    brickY = y;
   }
 
   void drawBrick() {

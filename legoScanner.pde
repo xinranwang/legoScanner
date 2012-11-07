@@ -17,6 +17,10 @@ color[] colors = new color[0];
 lego[] myLegos = new lego[0];
 lego[] loadLegos;
 
+startInterface myStartInterface;
+
+int mode = 0;
+
 void setup() {
   size(640, 480);
   strokeWeight(legoStrokeWeight);
@@ -24,6 +28,9 @@ void setup() {
 
   initColors();
   initLego();
+  
+  myStartInterface = new startInterface();
+  
   loadData();
 
   video = new Capture(this, width, height);
@@ -31,9 +38,11 @@ void setup() {
 }
 
 void draw() {
+  enterMode();
+  //myStartInterface.drawInterface();
   //enableVideo();
 
-  drawLoadData(mouseX, mouseY);
+  //drawLoadData(mouseX, mouseY);
   
 }
 
