@@ -7,6 +7,7 @@ void keyPressed() {
 
   if (key == RETURN || key == ENTER) {
     if (myStartInterface.active == 0) {
+      video.start();
       mode = 1;
     } 
     else {

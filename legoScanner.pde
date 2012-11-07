@@ -12,6 +12,7 @@ int mousePressedX, mousePressedY;
 
 // COLOR ARRAY
 color[] colors = new color[0];
+color[] grayColors = new color[0];
 
 // LEGO ARRAY
 lego[] myLegos = new lego[0];
@@ -27,6 +28,7 @@ void setup() {
   stroke(legoStrokeColor);
 
   initColors();
+  initGrayColors();
   initLego();
   
   myStartInterface = new startInterface();
@@ -34,14 +36,13 @@ void setup() {
   loadData();
 
   video = new Capture(this, width, height);
-  video.start();
+  //video.start();
 }
 
 void draw() {
   enterMode();
   //myStartInterface.drawInterface();
   //enableVideo();
-
   //drawLoadData(mouseX, mouseY);
   
 }
@@ -84,15 +85,26 @@ void initColors() {
   colors = (color[])append(colors, color(148, 234, 0)); // LIGHT GREEN
 }
 
+void initGrayColors() {
+  grayColors = (color[])append(grayColors, color(32)); // BLACK
+  grayColors = (color[])append(grayColors, color(128)); // WHITE
+  grayColors = (color[])append(grayColors, color(105, 36, 22)); // RED
+  grayColors = (color[])append(grayColors, color(8, 75, 49)); // GREEN
+  grayColors = (color[])append(grayColors, color(0, 35, 106)); // BLUE
+  grayColors = (color[])append(grayColors, color(140, 118, 90)); // YELLOW
+  grayColors = (color[])append(grayColors, color(144, 87, 41)); // ORANGE  
+  grayColors = (color[])append(grayColors, color(148, 234, 0)); // LIGHT GREEN
+}
+
 // CHOOSE THE NEAREST COLOR
 int colorInLegoIndex(float R, float G, float B) {
 
   float[] colorDistances = new float[0];
 
-  for (int i = 0; i < colors.length; i++) {
-    float colorR = red(colors[i]);
-    float colorG = green(colors[i]);
-    float colorB = blue(colors[i]);
+  for (int i = 0; i < grayColors.length; i++) {
+    float colorR = red(grayColors[i]);
+    float colorG = green(grayColors[i]);
+    float colorB = blue(grayColors[i]);
     colorDistances = append(colorDistances, dist(R, G, B, colorR, colorG, colorB));
   }
 
